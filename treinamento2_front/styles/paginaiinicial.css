@@ -1,0 +1,41 @@
+.carousel-inner {
+    height: 60vh;
+}
+
+#sobre{
+    margin: 3em;
+}
+
+.text-sobre{
+    text-align: justify;
+    margin-top: 1em;
+}
+
+.card{
+    min-width: 18rem;
+    max-width: 18rem;
+}
+
+.over{
+    width: 100vw;
+    justify-content: center;
+}
+
+.card-funcionalidade{
+    width: 150px;
+}
+
+@media(max-width:500px) {
+    .carousel-inner {
+        height: 20vh;
+    }
+
+    .over{
+        overflow-x: scroll;
+        justify-content: start;
+    }
+
+    .card-funcionalidade{
+        width: 150px;
+    }
+}

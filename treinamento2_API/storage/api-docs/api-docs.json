@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Minha API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/doctors": {
+            "post": {
+                "tags": [
+                    "Doctors"
+                ],
+                "summary": "Criação de doutores",
+                "operationId": "08504526ddafe7c7f25782a3b582fb29",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "especiality": {
+                                        "type": "string"
+                                    },
+                                    "start_hour": {
+                                        "type": "string"
+                                    },
+                                    "end_hour": {
+                                        "type": "string"
+                                    },
+                                    "break": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "week_days": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Animal criado com sucesso!"
+                    },
+                    "422": {
+                        "description": "Erro de validação"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/doctors?id=3": {
+            "get": {
+                "tags": [
+                    "Doctors"
+                ],
+                "summary": "Listagem de registros médicos.",
+                "operationId": "b90d1f03e861c8be1363ff65372da409",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/medical-data-index?id=3": {
+            "get": {
+                "tags": [
+                    "MedicalData"
+                ],
+                "summary": "Listagem de registros médicos.",
+                "operationId": "a19e026dd7db13ef9f1a90430c964623",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

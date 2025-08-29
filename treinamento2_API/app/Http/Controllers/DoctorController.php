@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Carbon\Carbon;
 
+
 class DoctorController extends Controller
 {
     public function __construct()
@@ -24,6 +25,32 @@ class DoctorController extends Controller
     /**
      * Função que valida e guarda no banco os valores informados no request, assim guardando um novo profissional
      */
+
+    /**
+     * @OA\Post(
+     *   path="/doctors",
+     *   tags={"Doctors"},
+     *   summary="Criação de doutores",
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\JsonContent(
+     *       type="object",
+     *       @OA\Property(property="especiality", type="string"),
+     *       @OA\Property(property="start_hour", type="string"),
+     *       @OA\Property(property="end_hour", type="string"),
+     *       @OA\Property(property="break", type="string"),
+     *       @OA\Property(property="user_id", type="integer"),
+     *       @OA\Property(
+     *          property="week_days",
+     *          type="array",
+     *          @OA\Items(type="string"))
+     *     )
+     *   ),
+     *   @OA\Response(response=201, description="Animal criado com sucesso!"),
+     *   @OA\Response(response=422, description="Erro de validação"),
+     *   @OA\Response(response=500, description="Erro interno do servidor")
+     * )
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -31,13 +58,6 @@ class DoctorController extends Controller
             'start_hour' => 'required',
             'end_hour' => 'required',
             'break' => 'required',
-            'sunday' => 'required|boolean',
-            'monday' => 'required|boolean',
-            'tuesday' => 'required|boolean',
-            'wednesday' => 'required|boolean',
-            'thursday' => 'required|boolean',
-            'friday' => 'required|boolean',
-            'saturday' => 'required|boolean',
             'user_id' => 'required',
             'week_days' => 'required|array|min:1'
         ]);
@@ -47,13 +67,6 @@ class DoctorController extends Controller
             'start_hour' => $request->start_hour,
             'end_hour' => $request->end_hour,
             'break' => $request->break,
-            'sunday' => $request->sunday,
-            'monday' => $request->monday,
-            'tuesday' => $request->tuesday,
-            'wednesday' => $request->wednesday,
-            'thursday' => $request->thursday,
-            'friday' => $request->friday,
-            'saturday' => $request->saturday,
             'user_id' => $request->user_id,
             'week_days' => $request->week_days
         ]);
@@ -64,6 +77,15 @@ class DoctorController extends Controller
     /**
      * Função que verifica se existe um profissional com o id informado no request, em caso de sucesso
      * retorna os dados desse profissional.
+     */
+
+     /**
+     * @OA\Get(
+     *   path="/doctors?id=3",
+     *   tags={"Doctors"},
+     *   summary="Listagem de registros médicos.",
+     *   @OA\Response(response=200, description="OK")
+     * )
      */
     public function show(Request $request)
     {

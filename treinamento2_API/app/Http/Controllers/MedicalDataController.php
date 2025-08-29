@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use OpenApi\Annotations as OA;
 use Illuminate\Http\Request;
 use App\Models\MedicalData;
 use Carbon\Carbon;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Info(title="Minha API", version="1.0.0")
